@@ -4,14 +4,14 @@ from django.http import HttpResponse
 def home_view(request):
     return HttpResponse('<h1>Добро пожаловать на мой сайт!</h1>')
 
-def about_view(request):
-    return HttpResponse('<h3>О нас</h3>')
+def products(request,id):
+    if id>0:
+        return HttpResponse(f'Товар с ID: {id}')
+    elif id<0:
+        return HttpResponse("Ошибка: ID должен быть положительным")
 
-def contact_view(request):
-    return HttpResponse('Email:something@gmail.com')
+def profile(request,username,post_id):
+    return HttpResponse(f"Пользователь: {username}, пост №{post_id}")
 
-def username_view(request,username):
-    return HttpResponse(f'Привет, {username}!')
-
-def article_id_view(request,article_id):
-    return HttpResponse(f'Статья №{article_id}')
+def greeting(request,name,language="Русский"):
+    return HttpResponse(f"Привет, {name}! Язык: {language}")
